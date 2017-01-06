@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
 
 class AddSong extends Component {
-  render() {
-    return (
-		<li className="list-group-item">
-			<span className="input-group">
-				<input type="text" className="form-control song-name" placeholder="Add a Song" />
-				<span className="input-group-btn"><button className="btn btn-default add" type="button">Add</button></span>
-			</span>
-		</li>
-    );
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			song: ''
+		}
+	}
+	handleKeyDown(e) {
+		if(e.key === "Enter") {
+			this.props.onAdd(this.state.song);
+		}
+	}
+	handleChange(e) {
+		this.setState({
+			song: e.target.value
+		});
+	}
+	handleAdd(){
+		this.props.onAdd(this.state.song);
+	}
+   render() {
+   	return (
+			<li className="list-group-item">
+				<span className="input-group">
+					<input type="text" className="form-control song-name" placeholder="Add a Song" onChange={(e) => this.handleChange(e)} onKeyDown={(e) => this.handleKeyDown(e)}/>
+					<span className="input-group-btn"><button onClick={() => this.handleAdd()} className="btn btn-default add" type="button">Add</button></span>
+				</span>
+			</li>
+    	);
+  	}
 }
 
 export default AddSong;

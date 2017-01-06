@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import logoDesktop from './img/desktop.gif';
 import logoMobile from './img/mobile.gif';
-import SongList from './components/SongList.js';
-import AddSong from './components/AddSong.js';
+import Roulette from './components/Roulette.js';
 import './App.css';
 
 class App extends Component {
@@ -16,10 +15,7 @@ class App extends Component {
 	 				<img src={logoDesktop} alt="Karaoke Roulette"/>
 				</picture>
          </h1>
-		  	<ul className="list-group">
-        		<AddSong />
-        		<SongList />
-        	</ul>
+         <Roulette />
       </div>
     );
   }
